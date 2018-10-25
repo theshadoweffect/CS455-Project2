@@ -14,8 +14,8 @@ while(data):
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     f.write(data);
+    conn.send("A")
 print "Sending acknowledgement"
-conn.send("A")
 conn.close()
 s.close()
 f.close()
