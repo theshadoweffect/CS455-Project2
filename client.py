@@ -6,6 +6,7 @@ timeInterval = 0.5 + 4 * 0.5
 s.settimeout(timeInterval)
 seq = 0
 maxSent = 0
+lastACK = -1
 curWindow = 5
 N = 5
 a = ":"
@@ -21,8 +22,11 @@ while seq <= 62:
         ACK, addr = s.recvfrom(1024)
         print ("Acknowledgement recieved", ACK)
 	ACK = int(ACK)
-	if ACK < maxSent+1:
+	if lastACK + 1 == ACK:
 	    curWindow = N + ACK
+	    lastACK = ACK
+	else:
+		seq = lastACK + 1
     except timeout:
 	seq = curWindow - N
 s.close()
