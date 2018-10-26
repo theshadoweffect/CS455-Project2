@@ -10,11 +10,11 @@ print('Connected by', addr)
 buf = 10240
 data, addr = conn.recvfrom(buf)
 while(data):
-    conn.settimeout(2)
+    conn.settimeout(5)
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     f.write(data);
-    conn.send("A")
+    conn.send("A\n")
 print "Sending acknowledgement"
 conn.close()
 s.close()
