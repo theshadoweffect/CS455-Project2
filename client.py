@@ -19,7 +19,6 @@ while seq < 62:
 	ACK = int(ACK)
 	curWindow = N + ACK
 	seq = ACK + 1
-	i = seq
     except timeout:
 	seq = curWindow - N
 s.close()
