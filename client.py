@@ -21,7 +21,6 @@ while seq < 62:
 	ACK = int(ACK)
 	if ACK < maxSent
 	    curWindow = N + ACK
-	    seq = ACK + 1
     except timeout:
 	seq = curWindow - N
 s.close()
