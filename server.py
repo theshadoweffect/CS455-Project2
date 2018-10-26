@@ -9,6 +9,7 @@ f = open("output.txt", "w")
 print('Connected by', addr)
 buf = 10240
 checkBuf = 10240
+checkBuf[0] = 0
 data, addr = conn.recvfrom(buf)
 prevsequence = -1
 while(data):
