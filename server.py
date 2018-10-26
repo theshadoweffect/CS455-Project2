@@ -16,7 +16,7 @@ while(data):
     print len(data), "bytes received..."
     c = data[0]
     seqNum, data = data.split(":")
-    if data.len == 1025:
+    if len(data) == 1025:
         print "Receiving packet", seqNum
         if prevsequence + 1 == int(seqNum):
             prevsequence = int(seqNum)
