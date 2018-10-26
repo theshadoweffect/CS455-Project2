@@ -25,11 +25,11 @@ while(data):
     conn.send(str(prevsequence)) 
     print "Sending acknowledgement", prevsequence
 droprate =  100 - (100 * 62/packets)  
-print "Packet loss rate", droprate
+print "Packet loss rate", droprate, "%"
 conn.close()
 s.close()
 f.close()
 elapsed = (timeit.default_timer() - start_time)
 throughput = (timeit.default_timer() - start_time)
 print '%.3f seconds' % elapsed
-print '%.3f seconds' % throughput
+print '%.3f seconds' % str(float(throughput)/float(packets))
