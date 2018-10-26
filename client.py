@@ -6,61 +6,18 @@ s.settimeout(0.5)
 seq = 0
 curWindow = 5
 N = 5
-for i in xrange(0, 10, 1):
+while seq < 62:
     if seq < curWindow:
-        data = str(seq) + str(i) * 1024 + '\n'
+        data = str(seq) + str(1) * 1024 + '\n'
         s.send(data)
-        print "Loop 1 sending", len(data), "bytes..."
-        seq = seq + 1
-    recieved = False
-    else:
-        while not recieved:	
-            try:
-                ACK, addr = s.recvfrom(1024)
-                print ("Acknowledgement recieved", ACK)
-	        curWindow = N + ACK
-	        seq = ACK + 1
-		i = seq
-	        recieved = True
-            except timeout:
-		seq = curWindow - N
-		i = seq
-for i in xrange(ord('a'), ord('z') + 1, 1):
-    if seq < curWindow:
-        data = str(seq) + chr(i) * 1024 + '\n'
-        s.send(data)
-        print "Loop 1 sending", len(data), "bytes..."
-        seq = seq + 1
-    recieved = False
-    else:
-        while not recieved:	
-            try:
-                ACK, addr = s.recvfrom(1024)
-                print ("Acknowledgement recieved", ACK)
-	        curWindow = N + ACK
-	        seq = ACK + 1
-		i = seq
-	        recieved = True
-            except timeout:
-		seq = curWindow - N
-		i = seq
-for i in xrange(ord('A'), ord('Z') + 1, 1):
-    if seq < curWindow:
-        data = str(seq) + chr(i) * 1024 + '\n'
-        s.send(data)
-        print "Loop 1 sending", len(data), "bytes..."
-        seq = seq + 1
-    recieved = False
-    else:
-        while not recieved:	
-            try:
-                ACK, addr = s.recvfrom(1024)
-                print ("Acknowledgement recieved", ACK)
-	        curWindow = N + ACK
-	        seq = ACK + 1
-		i = seq
-	        recieved = True
-            except timeout:
-		seq = curWindow - N
-		i = seq
+        print "Sequence: ", seq, "sending", len(data), "bytes..."
+        seq = seq + 1	
+    try:
+        ACK, addr = s.recvfrom(1024)
+        print ("Acknowledgement recieved", ACK)
+	curWindow = N + ACK
+	seq = ACK + 1
+	i = seq
+    except timeout:
+	seq = curWindow - N
 s.close()
