@@ -17,7 +17,7 @@ while(data):
     c = data[0]
     seqNum = ""
     while c != ":":
-        seqNum.append(c)
+        seqNum += c
         temp = data[-1]
         data = data[:-1]
         c = data[0]
