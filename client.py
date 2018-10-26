@@ -20,7 +20,7 @@ while seq < 62:
         ACK, addr = s.recvfrom(1024)
         print ("Acknowledgement recieved", ACK)
 	ACK = int(ACK)
-	if ACK < maxSent:
+	if ACK < maxSent+1:
 	    curWindow = N + ACK
     except timeout:
 	seq = curWindow - N
