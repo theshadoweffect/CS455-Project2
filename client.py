@@ -4,6 +4,7 @@ s = socket(AF_INET, SOCK_STREAM)
 s.connect(("10.0.0.2", 9999))
 s.settimeout(2)
 seq = 0
+maxSent = 0
 curWindow = 5
 N = 5
 a = ":"
