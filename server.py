@@ -20,7 +20,7 @@ while(data):
         packet = data[-1]
         data = data[:-1]
         f.write(packet)
-    conn.send(prevsequence) 
+    conn.send(str(prevsequence)) 
 print "Sending acknowledgement"
 conn.close()
 s.close()
