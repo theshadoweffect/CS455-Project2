@@ -2,7 +2,8 @@ from socket import *
 import sys, timeit
 s = socket(AF_INET, SOCK_STREAM)
 s.connect(("10.0.0.2", 9999))
-s.settimeout(2) #Calculate TCP Window is the formula
+timeInterval = 0.5 + 4 * 0.5
+s.settimeout(timeInterval)
 seq = 0
 maxSent = 0
 curWindow = 5
