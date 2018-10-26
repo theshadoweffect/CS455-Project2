@@ -30,5 +30,6 @@ conn.close()
 s.close()
 f.close()
 elapsed = (timeit.default_timer() - start_time)
+throughput = (timeit.default_timer() - start_time)
 print '%.3f seconds' % elapsed
-print '%.3f seconds' % elapsed/packets
+print '%.3f seconds' % throughput
