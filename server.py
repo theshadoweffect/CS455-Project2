@@ -16,18 +16,19 @@ while(data):
     print len(data), "bytes received..."
     c = data[0]
     seqNum = ""
-    while c != ":"
+    while c != ":":
         seqNum.push(c)
         c = data[0]
         temp = data[-1]
         data = data[:-1]
+    print "Receiving packet", seqNum
     if prevsequence + 1 == int(seqNum):
         prevsequence = int(seqNum)
         packet = data[-1]
         data = data[:-1]
         f.write(data)
     conn.send(str(prevsequence)) 
-print "Sending acknowledgement"
+    print "Sending acknowledgement", prevsequence
 conn.close()
 s.close()
 f.close()
