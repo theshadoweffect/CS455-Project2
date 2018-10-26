@@ -2,13 +2,14 @@ from socket import *
 import sys, timeit
 s = socket(AF_INET, SOCK_STREAM)
 s.connect(("10.0.0.2", 9999))
-s.settimeout(0.5)
+s.settimeout(2)
 seq = 0
 curWindow = 5
 N = 5
+a = ":"
 while seq < 62:
     if seq < curWindow:
-        data = str(seq) + str(1) * 1024 + '\n'
+        data = str(seq) + str(a) + str(1) * 1024 + '\n'
         s.send(data)
         print "Sequence: ", seq, "sending", len(data), "bytes..."
         seq = seq + 1	
