@@ -12,13 +12,16 @@ while seq < 62:
         data = str(seq) + str(a) + str(1) * 1024 + '\n'
         s.send(data)
         print "Sequence: ", seq, "sending", len(data), "bytes..."
-        seq = seq + 1	
+	if seq > maxSent
+	    maxSent = seq
+        seq = seq + 1
     try:
         ACK, addr = s.recvfrom(1024)
         print ("Acknowledgement recieved", ACK)
 	ACK = int(ACK)
-	curWindow = N + ACK
-	seq = ACK + 1
+	if ACK < maxSent
+	    curWindow = N + ACK
+	    seq = ACK + 1
     except timeout:
 	seq = curWindow - N
 s.close()
