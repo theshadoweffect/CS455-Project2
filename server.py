@@ -18,15 +18,16 @@ while(data):
     seqNum = ""
     while c != ":":
         seqNum.push(c)
-        c = data[0]
         temp = data[-1]
         data = data[:-1]
-    print "Receiving packet", seqNum
-    if prevsequence + 1 == int(seqNum):
-        prevsequence = int(seqNum)
-        packet = data[-1]
-        data = data[:-1]
-        f.write(data)
+        c = data[0]
+    temp = data[-1]
+    data = data[:-1]
+    if data.len == 1025
+        print "Receiving packet", seqNum
+        if prevsequence + 1 == int(seqNum):
+            prevsequence = int(seqNum)
+            f.write(data)
     conn.send(str(prevsequence)) 
     print "Sending acknowledgement", prevsequence
 conn.close()
