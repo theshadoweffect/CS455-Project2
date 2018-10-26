@@ -15,14 +15,7 @@ while(data):
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     c = data[0]
-    seqNum = ""
-    while c != ":":
-        seqNum += c
-        temp = data[-1]
-        data = data[:-1]
-        c = data[0]
-    temp = data[-1]
-    data = data[:-1]
+    seqNum, data = data.split(":")
     if data.len == 1025:
         print "Receiving packet", seqNum
         if prevsequence + 1 == int(seqNum):
