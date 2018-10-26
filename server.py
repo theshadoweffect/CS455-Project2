@@ -10,7 +10,7 @@ print('Connected by', addr)
 buf = 10240
 checkBuf = 10240
 data, addr = conn.recvfrom(buf)
-prevsequence = 0
+prevsequence = -1
 while(data):
     conn.settimeout(5)
     data, addr = conn.recvfrom(buf)
