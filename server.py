@@ -9,7 +9,6 @@ f = open("output.txt", "w")
 print('Connected by', addr)
 buf = 10240
 checkBuf = 10240
-checkBuf[0] = 0
 data, addr = conn.recvfrom(buf)
 prevsequence = -1
 while(data):
@@ -18,16 +17,8 @@ while(data):
     print len(data), "bytes received..."
     if prevsequence + 1 == int(data[0]):
         prevsequence = int(data[0])
-        if int(checkBuf[0]) - 1 == int(data[0]):
-            checkBuf.pop(0)
-            data.pop(0)
-            f.write(data)
-            f.write(checkBuf)
-        else:
-            data.pop(0)
-            f.write(data)
-    else:
-        checkBuf = data
+        data.pop(0)
+        f.write(data)
     conn.send(prevsequence) 
 print "Sending acknowledgement"
 conn.close()
