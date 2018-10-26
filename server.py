@@ -17,8 +17,9 @@ while(data):
     print len(data), "bytes received..."
     if prevsequence + 1 == int(data[0]):
         prevsequence = int(data[0])
-        data.pop(0)
-        f.write(data)
+        packet = data[-1]
+        data = data[:-1]
+        f.write(packet)
     conn.send(prevsequence) 
 print "Sending acknowledgement"
 conn.close()
