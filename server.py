@@ -14,9 +14,8 @@ while(data):
     conn.settimeout(5)
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
-    c = data[0]
-    seqNum, data = data.split(":")
-    if len(data) == 1025:
+    if len(data) == 1027:
+        seqNum, data = data.split(":")
         print "Receiving packet", seqNum
         if prevsequence + 1 == int(seqNum):
             prevsequence = int(seqNum)
