@@ -8,7 +8,7 @@ maxSent = 0
 curWindow = 5
 N = 5
 a = ":"
-while seq < 62:
+while seq <= 62:
     if seq < curWindow:
         data = str(seq) + str(a) + str(1) * 1024 + '\n'
         s.send(data)
