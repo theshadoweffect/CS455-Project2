@@ -31,3 +31,4 @@ s.close()
 f.close()
 elapsed = (timeit.default_timer() - start_time)
 print '%.3f seconds' % elapsed
+print '%.3f seconds' % elapsed/packets
