@@ -8,13 +8,18 @@ start_time = timeit.default_timer()
 f = open("output.txt", "w")
 print('Connected by', addr)
 buf = 10240
+checkBuf = 10240
 data, addr = conn.recvfrom(buf)
+prevsequence = -1
 while(data):
     conn.settimeout(5)
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
-    f.write(data);
-    conn.send("A\n")
+    if prevsequence + 1 == int(data[0]):
+        prevsequence = int(data[0])
+        data.pop(0)
+        f.write(data)
+    conn.send(prevsequence) 
 print "Sending acknowledgement"
 conn.close()
 s.close()
