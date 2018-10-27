@@ -7,19 +7,18 @@ conn, addr = s.accept()
 start_time = timeit.default_timer()
 f = open("output.txt", "w")
 print('Connected by', addr)
-buf = 1024
+buf = 1028
 data, addr = conn.recvfrom(buf)
 prevsequence = -1
 packets = 1
 while(data):
     conn.settimeout(10)
-    seq, addr = conn.recvfrom(3)
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     packets = packets + 1
-    seqNum = seq.split(":")
-    print "Receiving packet", seqNum[0]
-    if prevsequence + 1 == int(seqNum[0]):
+    seqNum, data = data.split(":")
+    print "Receiving packet", seqNum
+    if prevsequence + 1 == int(seqNum):
         prevsequence = int(seqNum)
         f.write(data)
     conn.send((str(prevsequence)+":")) 
