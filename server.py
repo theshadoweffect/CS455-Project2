@@ -20,7 +20,6 @@ while(stored):
         if buffer[i][0] == ":":
             data = buffer[i]
         i = i+1
-        packets+1
         if len(data) == 1028:
             ignore, seqNum, data = data.split(":")
             print "Receiving packet", seqNum
