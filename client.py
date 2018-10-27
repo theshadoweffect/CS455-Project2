@@ -22,7 +22,8 @@ while seq <= 62:
         try:
             data, addr = s.recvfrom(1024)
 	    array = data.split(":")
-	    ACK = int(array[-1:])
+	    last = len(array)-1
+	    ACK = int(array[last])
 	    curWindow = N + ACK
 	    seq = ACK+1
 	    print ("Acknowledgement recieved", ACK)
