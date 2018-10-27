@@ -8,9 +8,14 @@ start_time = timeit.default_timer()
 f = open("output.txt", "w")
 print('Connected by', addr)
 buf = 10240
-data, addr = conn.recvfrom(buf)
+stored, addr = conn.recvfrom(buf)
 prevsequence = 0
 packets = 1
+data = ''
+while i < 1028 and len(stored) > 0:
+    data = data + stored[0]
+    stored = stored[1:]
+    i=i+1
 while(data):
     conn.settimeout(10)
     stored, addr = conn.recvfrom(buf)
