@@ -22,7 +22,7 @@ while(data):
         if prevsequence + 1 == int(seqNum):
             prevsequence = int(seqNum)
             f.write(data)
-    conn.send(str(prevsequence)) 
+    conn.send((str(prevsequence)+":")) 
     print "Sending acknowledgement", prevsequence
 droprate =  100 - (100 * 62/packets)  
 print "Packet loss rate", droprate, "%"
