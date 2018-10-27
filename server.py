@@ -12,6 +12,7 @@ stored, addr = conn.recvfrom(buf)
 prevsequence = 0
 packets = 1
 data = ''
+i = 0
 while i < 1028 and len(stored) > 0:
     data = data + stored[0]
     stored = stored[1:]
