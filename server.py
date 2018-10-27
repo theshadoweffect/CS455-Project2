@@ -17,7 +17,8 @@ while(data):
     conn.settimeout(10)
     stored, addr = conn.recvfrom(buf)
     print len(stored), "bytes received..."
-    print stored
+    while stored[0] != ":" and stored[3] != ":" and len(stored) > 0:
+        stored[1:]
     buffer = stored.split('\n')
     print buffer
     data = buffer[0]
