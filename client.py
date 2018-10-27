@@ -16,7 +16,7 @@ while seq <= 62:
 		seqName = str(seq)
         data = seqName + ":" + str(1) * 1024 + '\n'
         s.send(data)
-        print "Sequence: ", seq, "sending", len(data), "bytes..."
+        print "Sequence: ", seqName, "sending", len(data), "bytes..."
         seq = seq + 1
     if seq == curWindow:
         try:
