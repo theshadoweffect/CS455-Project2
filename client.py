@@ -8,10 +8,13 @@ seq = 0
 lastACK = 0
 curWindow = 5
 N = 5
-a = ":"
 while seq <= 62:
     if seq < curWindow:
-        data = str(seq) + str(a) + str(1) * 1024 + '\n'
+	if seq < 10:
+		seqName = str(0) + str(seq)
+	else:
+		seqName = str(seq)
+        data = seqName + ":" + str(1) * 1024 + '\n'
         s.send(data)
         print "Sequence: ", seq, "sending", len(data), "bytes..."
         seq = seq + 1
