@@ -14,7 +14,7 @@ while seq <= 63:
 		seqName = str(0) + str(seq)
 	else:
 		seqName = str(seq)
-        data = seqName + ":" + str(1) * 1024 + '\n'
+        data = ":" seqName + ":" + str(1) * 1024 + '\n'
         s.send(data)
         print "Sequence: ", seqName, "sending", len(data), "bytes..."
         seq = seq + 1
