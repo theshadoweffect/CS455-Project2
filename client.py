@@ -6,7 +6,7 @@ timeInterval = 0.5 + 4 * 0.5
 s.settimeout(timeInterval)
 seq = 0
 maxSent = 0
-lastACK = -1
+lastACK = 0
 curWindow = 5
 N = 5
 a = ":"
