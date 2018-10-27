@@ -21,8 +21,7 @@ while(data):
         stored[1:]
     buffer = stored.split('\n')
     data = buffer[0]
-    data[1:]
-    data[1:]
+    data[0] = '0'
     print data
     if len(data) == 1028:
         seqNum, data = data.split(":")
