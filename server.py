@@ -18,8 +18,8 @@ while(data):
     print len(data), "bytes received..."
     packets = packets + 1
     seqNum = seq.split(":")
-    print "Receiving packet", seqNum
-    if prevsequence + 1 == int(seqNum):
+    print "Receiving packet", seqNum[0]
+    if prevsequence + 1 == int(seqNum[0]):
         prevsequence = int(seqNum)
         f.write(data)
     conn.send((str(prevsequence)+":")) 
