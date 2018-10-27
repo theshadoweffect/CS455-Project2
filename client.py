@@ -4,11 +4,11 @@ s = socket(AF_INET, SOCK_STREAM)
 s.connect(("10.0.0.2", 9999))
 timeInterval = 3
 s.settimeout(timeInterval)
-seq = 0
+seq = 1
 lastACK = 0
 curWindow = 5
 N = 5
-while seq <= 62:
+while seq <= 63:
     if seq < curWindow:
 	if seq < 10:
 		seqName = str(0) + str(seq)
