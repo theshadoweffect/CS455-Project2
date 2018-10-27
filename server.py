@@ -9,7 +9,7 @@ f = open("output.txt", "w")
 print('Connected by', addr)
 buf = 1028
 data, addr = conn.recvfrom(buf)
-prevsequence = -1
+prevsequence = 0
 packets = 1
 while(data):
     conn.settimeout(10)
