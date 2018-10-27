@@ -12,7 +12,7 @@ data, addr = conn.recvfrom(buf)
 prevsequence = -1
 packets = 1
 while(data):
-    conn.settimeout(5)
+    conn.settimeout(10)
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     packets = packets + 1
