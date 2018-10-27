@@ -23,7 +23,7 @@ while seq <= 63:
             data, addr = s.recvfrom(1024)
 	    array = data.split(":")
 	    print array
-	    last = len(array)-1
+	    last = len(array)-2
 	    print last
 	    ACK = array[last]
 	    ACK = int(ACK)
