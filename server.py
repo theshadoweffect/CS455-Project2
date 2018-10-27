@@ -15,15 +15,15 @@ while(data):
     conn.settimeout(10)
     data, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
-    packets = packets + 1
-    seqNum, data = data.split(":")
-    print "Receiving packet", seqNum, "seq", int(seqNum)
-    if prevsequence + 1 == int(seqNum):
-        prevsequence = int(seqNum)
-        f.write(data)
+    if data == 1024:
+        packets = packets + 1
+        seqNum, data = data.split(":")
+        print "Receiving packet", seqNum, "seq", int(seqNum)
+        if prevsequence + 1 == int(seqNum):
+            prevsequence = int(seqNum)
+            f.write(data)
     conn.send((str(prevsequence)+":")) 
     print "Sending acknowledgement", prevsequence
-
 conn.close()
 s.close()
 f.close()
