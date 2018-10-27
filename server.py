@@ -4,7 +4,6 @@ s = socket(AF_INET, SOCK_STREAM)
 s.bind(("0.0.0.0", 9999))
 s.listen(1)
 conn, addr = s.accept()
-start_time = timeit.default_timer()
 f = open("output.txt", "w")
 print('Connected by', addr)
 buf = 10240
@@ -30,10 +29,5 @@ while(stored):
     print "Sending acknowledgement", prevsequence
 conn.close()
 s.close()
-f.close()
-droprate =  100 - (100 * 62/packets)  
-print "Packet loss rate", droprate, "%"
-elapsed = (timeit.default_timer() - start_time)
-throughput = (timeit.default_timer() - start_time)/packets
-print '%.3f seconds' % elapsed
-print '%.3f seconds' % throughput
+f.close() 
+
