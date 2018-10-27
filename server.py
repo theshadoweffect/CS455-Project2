@@ -16,6 +16,7 @@ while(data):
     stored, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     i = 0
+    data = ''
     while i < 1028 and len(stored) > 0:
         data = data + stored[0]
         stored = stored[1:]
@@ -27,7 +28,6 @@ while(data):
             prevsequence = int(seqNum)
             f.write(data)
     conn.send((str(prevsequence)+":")) 
-    data = ''
     print "Sending acknowledgement", prevsequence
 conn.close()
 s.close()
