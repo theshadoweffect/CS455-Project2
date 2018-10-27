@@ -8,6 +8,7 @@ seq = 1
 lastACK = 0
 curWindow = 5
 N = 5
+packets = 0
 while seq <= 63:
     if seq < curWindow:
 	if seq < 10:
@@ -16,6 +17,7 @@ while seq <= 63:
 		seqName = str(seq)
         data = ":" + seqName + ":" + str(1) * 1024 + '\n'
         s.send(data)
+	packets+1
         print "Sequence: ", seqName, "sending", len(data), "bytes..."
         seq = seq + 1
     if seq == curWindow:
@@ -30,4 +32,5 @@ while seq <= 63:
 	    print ("Acknowledgement recieved", ACK)
         except timeout:
 	    seq = curWindow - N
+print "Loss rate:", (100 - 100*62/packets) 
 s.close()
