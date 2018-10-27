@@ -17,7 +17,7 @@ while(data):
     print len(data), "bytes received..."
     packets = packets + 1
     seqNum, data = data.split(":")
-    print "Receiving packet", seqNum
+    print "Receiving packet", seqNum, "seq", int(seqNum)
     if prevsequence + 1 == int(seqNum):
         prevsequence = int(seqNum)
         f.write(data)
