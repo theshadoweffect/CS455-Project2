@@ -13,15 +13,20 @@ prevsequence = 0
 packets = 1
 while(data):
     conn.settimeout(10)
-    data, addr = conn.recvfrom(buf)
+    stored, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
-    packets = packets + 1
+    i = 0
+    while i < 1028 and len(stored) > 0
+        data = data+stored[0]
+        stored = stored[1:]
+        i=i+1
     seqNum, data = data.split(":")
     print "Receiving packet", seqNum, "seq", int(seqNum)
     if data == 1024:
         if prevsequence + 1 == int(seqNum):
             prevsequence = int(seqNum)
             f.write(data)
+            data = ""
     conn.send((str(prevsequence)+":")) 
     print "Sending acknowledgement", prevsequence
 conn.close()
