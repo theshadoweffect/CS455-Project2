@@ -4,6 +4,7 @@ s = socket(AF_INET, SOCK_STREAM)
 s.connect(("10.0.0.2", 9999))
 timeInterval = 5
 s.settimeout(timeInterval)
+start_time = timeit.default_timer()
 seq = 1
 lastACK = 0
 curWindow = 5
@@ -34,3 +35,7 @@ while seq <= 63:
 	    seq = curWindow - N
 print "Loss rate:", (100 - 100*62/packets) 
 s.close()
+elapsed = (timeit.default_timer() - start_time)
+throughput = (timeit.default_timer() - start_time)/packets
+print '%.3f seconds' % elapsed
+print '%.3f seconds' % throughput
