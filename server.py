@@ -26,8 +26,8 @@ while(data):
         if prevsequence + 1 == int(seqNum):
             prevsequence = int(seqNum)
             f.write(data)
-            data = ""
     conn.send((str(prevsequence)+":")) 
+    del data
     print "Sending acknowledgement", prevsequence
 conn.close()
 s.close()
