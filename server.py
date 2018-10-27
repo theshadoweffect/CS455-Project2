@@ -21,7 +21,7 @@ while(data):
         data = data + stored[0]
         stored = stored[1:]
         i=i+1
-    if data == 1028:
+    if len(data) == 1028:
         seqNum, data = data.split(":")
         print "Receiving packet", seqNum, "seq", int(seqNum)
         if prevsequence + 1 == int(seqNum):
