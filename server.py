@@ -15,8 +15,11 @@ while(data):
     conn.settimeout(10)
     stored, addr = conn.recvfrom(buf)
     print len(stored), "bytes received..."
-    i = 0
-    data = ''
+    if len(data) != 1024:
+        i = len(data)-1
+    else:
+        i = 0
+        data = ''
     while i < 1028 and len(stored) > 0:
         data = data + stored[0]
         stored = stored[1:]
