@@ -16,13 +16,13 @@ while(data):
     stored, addr = conn.recvfrom(buf)
     print len(data), "bytes received..."
     i = 0
-    while i < 1028 and len(stored) > 0
+    while i < 1028 and len(stored) > 0:
         data = data+stored[0]
         stored = stored[1:]
         i=i+1
-    seqNum, data = data.split(":")
-    print "Receiving packet", seqNum, "seq", int(seqNum)
-    if data == 1024:
+    if data == 1028:
+        seqNum, data = data.split(":")
+        print "Receiving packet", seqNum, "seq", int(seqNum)
         if prevsequence + 1 == int(seqNum):
             prevsequence = int(seqNum)
             f.write(data)
