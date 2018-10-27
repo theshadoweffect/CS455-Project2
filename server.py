@@ -11,25 +11,14 @@ buf = 10240
 stored, addr = conn.recvfrom(buf)
 prevsequence = 0
 packets = 1
-data = ''
-i = 0
-while i < 1028 and len(stored) > 0:
-    data = data + stored[0]
-    stored = stored[1:]
-    i=i+1
+stored = stored.split('\n')
+data = stored[0]
 while(data):
     conn.settimeout(10)
     stored, addr = conn.recvfrom(buf)
     print len(stored), "bytes received..."
-    if len(data) < 1024:
-        i = len(data)-1
-    else:
-        i = 0
-        data = ''
-    while i < 1028 and len(stored) > 0:
-        data = data + stored[0]
-        stored = stored[1:]
-        i=i+1
+    buffer = stored.split('\n')
+    data = buffer[0]
     if len(data) == 1028:
         seqNum, data = data.split(":")
         print "Receiving packet", seqNum, "seq", int(seqNum)
