@@ -18,7 +18,9 @@ while(data):
     stored, addr = conn.recvfrom(buf)
     print len(stored), "bytes received..."
     buffer = stored.split('\n')
-    data = buffer[0]
+    for i in buffer
+        if buffer[i][0] == ":"
+            data = buffer[i]
     print data
     if len(data) == 1028:
         ignore, seqNum, data = data.split(":")
