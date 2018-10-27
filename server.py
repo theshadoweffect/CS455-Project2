@@ -17,7 +17,7 @@ while(data):
     print len(data), "bytes received..."
     i = 0
     while i < 1028 and len(stored) > 0:
-        data[i] = stored[0]
+        data = data + stored[0]
         stored = stored[1:]
         i=i+1
     if data == 1028:
@@ -27,6 +27,7 @@ while(data):
             prevsequence = int(seqNum)
             f.write(data)
     conn.send((str(prevsequence)+":")) 
+    data = ''
     print "Sending acknowledgement", prevsequence
 conn.close()
 s.close()
