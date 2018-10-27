@@ -22,7 +22,9 @@ while seq <= 63:
         try:
             data, addr = s.recvfrom(1024)
 	    array = data.split(":")
+	    print array
 	    last = len(array)-1
+	    print last
 	    ACK = array[last]
 	    ACK = int(ACK)
 	    curWindow = N + ACK
