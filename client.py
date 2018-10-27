@@ -18,7 +18,7 @@ while seq <= 63:
 		seqName = str(seq)
         data = ":" + seqName + ":" + str(1) * 1024 + '\n'
         s.send(data)
-	packets+1
+	packets = packets+1
         print "Sequence: ", seqName, "sending", len(data), "bytes..."
         seq = seq + 1
     if seq == curWindow:
@@ -33,7 +33,8 @@ while seq <= 63:
 	    print ("Acknowledgement recieved", ACK)
         except timeout:
 	    seq = curWindow - N
-print "Loss rate:", (100 - 100*62/packets) 
+lose = (100 - 100*62/packets)
+print "Loss rate:", lose 
 s.close()
 elapsed = (timeit.default_timer() - start_time)
 throughput = (timeit.default_timer() - start_time)/packets
