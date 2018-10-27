@@ -18,6 +18,7 @@ while(data):
     stored, addr = conn.recvfrom(buf)
     print len(stored), "bytes received..."
     buffer = stored.split('\n')
+    i = 0
     while i < len(buffer)-1:
         if buffer[i][0] == ":":
             data = buffer[i]
