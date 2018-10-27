@@ -9,6 +9,7 @@ print('Connected by', addr)
 buf = 10240
 stored, addr = conn.recvfrom(buf)
 prevsequence = 0
+data = ''
 while(stored):
     conn.settimeout(20)
     stored, addr = conn.recvfrom(buf)
