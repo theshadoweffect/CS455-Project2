@@ -14,7 +14,7 @@ packets = 1
 while(data):
     conn.settimeout(10)
     stored, addr = conn.recvfrom(buf)
-    print len(data), "bytes received..."
+    print len(stored), "bytes received..."
     i = 0
     data = ''
     while i < 1028 and len(stored) > 0:
