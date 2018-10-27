@@ -22,9 +22,10 @@ while seq <= 62:
         ACK, addr = s.recvfrom(1024)
         print ("Acknowledgement recieved", ACK)
 	ACK = int(ACK)
-	if ACK+N >= curWindow:
-		curWindow = N + ACK
-		seq = ACK + 1
+	if ACK > lastACK:
+		lastACK = ACK
+	curWindow = N + lastACK
+	seq = lastACK + 1
     except timeout:
 	seq = curWindow - N
 s.close()
