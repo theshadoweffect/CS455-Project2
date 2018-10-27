@@ -18,11 +18,11 @@ while seq <= 62:
     if seq == curWindow:
         try:
             data, addr = s.recvfrom(1024)
-            print ("Acknowledgement recieved", ACK)
 	    array = data.split(":")
 	    ACK = int(array[-1:])
 	    curWindow = N + ACK
 	    seq = ACK+1
+	    print ("Acknowledgement recieved", ACK)
         except timeout:
 	    seq = curWindow - N
 s.close()
