@@ -7,7 +7,7 @@ conn, addr = s.accept()
 start_time = timeit.default_timer()
 f = open("output.txt", "w")
 print('Connected by', addr)
-buf = 1028
+buf = 10240
 data, addr = conn.recvfrom(buf)
 prevsequence = 0
 packets = 1
