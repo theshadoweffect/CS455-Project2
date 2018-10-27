@@ -20,8 +20,8 @@ while(data):
     while stored[0] != ":" and stored[3] != ":" and len(stored) > 0:
         stored[1:]
     buffer = stored.split('\n')
-    print buffer
     data = buffer[0]
+    data[1:]
     print data
     if len(data) == 1028:
         seqNum, data = data.split(":")
